@@ -131,7 +131,6 @@ class HomePage extends StatelessWidget {
     );
   }
 
-
   Column _dietSection() {
     return Column(
           crossAxisAlignment: CrossAxisAlignment.start,
