@@ -1,5 +1,6 @@
 
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/Pages/saladPage.dart';
 import 'package:flutter_application_1/modals/category_models.dart';
 import 'package:flutter_application_1/modals/diet_model.dart';
 import 'package:flutter_application_1/modals/popular_model.dart';
@@ -329,7 +330,17 @@ Column _dietSection() {
                 ),
                 separatorBuilder: (context, index) => SizedBox(width: 25),
                 itemBuilder: (context, index){
-                  return Container(
+                  return GestureDetector(
+                    onTap: (){
+                      Navigator.push(context, 
+                      MaterialPageRoute(builder: (context) => SaladPage(
+                        categoryName: filteredCategories[index].name
+                        )
+                      )
+                    );
+                  },
+                  
+                  child: Container(
                     width: 100,
                     decoration: BoxDecoration(
                       color: categories[index].boxColor.withOpacity(0.3),
@@ -360,7 +371,7 @@ Column _dietSection() {
                         )
                       ],
                     ),
-                  );
+                  ));
                 },
               ),
             )
@@ -405,32 +416,13 @@ Column _dietSection() {
           'Homepage',
           style: TextStyle(
             color: Colors.black,
-            fontSize: 30,
+            fontSize: 18,
             fontWeight: FontWeight.bold
           ),
           ),
         centerTitle: true,
         elevation: 0.0,
         backgroundColor: Colors.white,
-
-        // leading: GestureDetector(
-        //   onTap: (){
-
-        //   },
-        //   child: Container(
-        //     margin: EdgeInsets.all(10),
-        //     alignment: Alignment.center,
-        //     decoration: BoxDecoration(
-        //       color: const Color.fromARGB(255, 255, 255, 255),
-        //       borderRadius: BorderRadius.circular(10)
-        //     ),
-        //     child: SvgPicture.asset(
-        //       'assets/icons/Arrow - Left 2.svg',
-        //       height: 20,
-        //       width: 20,
-        //       ),
-        //   ),
-        // ),
     );
   }
 }
