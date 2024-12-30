@@ -12,13 +12,13 @@ class HomePage extends StatelessWidget {
   List<DietModel> diets = [];
   List<PopularDietsModel> popularDiets = [];
 
-  void _getCategories(){
-    categories = CategoryModel.getCategories();
-  }
+  // void _getCategories(){
+  //   categories = CategoryModel.getCategories();
+  // }
 
-  void _getDiets(){
-    diets = DietModel.getDiets();
-  }
+  // void _getDiets(){
+  //   diets = DietModel.getDiets();
+  // }
 
   void _getInitialInfo(){
     categories = CategoryModel.getCategories();
@@ -28,12 +28,13 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    _getCategories();
+    _getInitialInfo();
     return Scaffold(
       appBar: appBar(),
+      drawer: _drawer(context),
       backgroundColor: Colors.white,
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+      body: ListView(
+        // crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           _searchField(),
           SizedBox(height: 40,),
@@ -131,7 +132,41 @@ class HomePage extends StatelessWidget {
     );
   }
 
-  Column _dietSection() {
+  Drawer _drawer(BuildContext context) {
+    return Drawer(
+      backgroundColor: Colors.white,
+      child: Column(
+        children: [
+          DrawerHeader(
+            child: Icon(
+            Icons.air,
+            size: 48,
+            )
+          ),
+
+          ListTile(
+            leading: Icon(Icons.person),
+            title: Text("P R O F I L E"),
+            onTap: () {
+              Navigator.pop(context);
+              Navigator.pushNamed(context, '/firstPage');
+            },
+          ),
+
+          ListTile(
+            leading: Icon(Icons.settings),
+            title: Text("S E T T I N G S"),
+            onTap: () {
+              Navigator.pop(context);
+              Navigator.pushNamed(context, '/settingPage');
+            },
+          )
+        ],
+      ),
+    );
+  }
+
+Column _dietSection() {
     return Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -333,24 +368,24 @@ class HomePage extends StatelessWidget {
         elevation: 0.0,
         backgroundColor: Colors.white,
 
-        leading: GestureDetector(
-          onTap: (){
+        // leading: GestureDetector(
+        //   onTap: (){
 
-          },
-          child: Container(
-            margin: EdgeInsets.all(10),
-            alignment: Alignment.center,
-            decoration: BoxDecoration(
-              color: const Color.fromARGB(255, 255, 255, 255),
-              borderRadius: BorderRadius.circular(10)
-            ),
-            child: SvgPicture.asset(
-              'assets/icons/Arrow - Left 2.svg',
-              height: 20,
-              width: 20,
-              ),
-          ),
-        ),
+        //   },
+        //   child: Container(
+        //     margin: EdgeInsets.all(10),
+        //     alignment: Alignment.center,
+        //     decoration: BoxDecoration(
+        //       color: const Color.fromARGB(255, 255, 255, 255),
+        //       borderRadius: BorderRadius.circular(10)
+        //     ),
+        //     child: SvgPicture.asset(
+        //       'assets/icons/Arrow - Left 2.svg',
+        //       height: 20,
+        //       width: 20,
+        //       ),
+        //   ),
+        // ),
     );
   }
 }

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/Pages/firstPage.dart';
+import 'package:flutter_application_1/Pages/settingsPage.dart';
 
 import 'Pages/home.dart';
 
@@ -15,6 +17,11 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: HomePage(),
+      routes: {
+        '/homePage': (context) => HomePage(),
+        '/firstPage': (context) => Firstpage(),
+        '/settingPage': (context) => Settingspage()
+      },
     );
   }
 }
